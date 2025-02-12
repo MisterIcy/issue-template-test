@@ -5,8 +5,8 @@ labels:
   - bug
 body:
   - type: markdown
-      attributes:
-        value: "## Thank you for contributing to our project!"
+    attributes:
+      value: "## Thank you for contributing to our project!"
   - type: checkboxes
     id: checklist
     attributes:
