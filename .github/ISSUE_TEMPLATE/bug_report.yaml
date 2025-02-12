@@ -1,0 +1,21 @@
+name: "Bug Report"
+description: |
+  Fill in a bug report
+labels:  
+  - bug
+body:
+  - type: markdown
+    attributes:
+      values: |
+        Before you submit a bug report, please make sure you have completed the following steps:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Bug Report Checklist
+      description: |
+        Please check the following items before submitting a bug report.
+      options:
+        - label: I have checked that the issue has not already been reported
+          required: true
+        - label: I have checked the documentation for a solution
+          required: true
