@@ -5,9 +5,8 @@ labels:
   - bug
 body:
   - type: markdown
-    attributes:
-      values: |
-        Before you submit a bug report, please make sure you have completed the following steps:
+      attributes:
+        value: "## Thank you for contributing to our project!"
   - type: checkboxes
     id: checklist
     attributes:
