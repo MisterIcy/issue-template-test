@@ -21,8 +21,8 @@ body:
         
         **Note**: Versions prior to 7.0.0 are no longer supported. Please confirm that the issue exists on a supported version before reporting.
       placeholder: 7.0.0
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: description
     attributes:
