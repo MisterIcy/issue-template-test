@@ -1,160 +1,109 @@
-openapi: 3.1.0
-info:
-  title: Webhooks for Bees
-  description: Webhook Specification
-  version: 1.0.0
-
-paths:
-  /:
-  
-webhooks:
-  userEnrolledInCourse:
-    post:
-      summary: A user has enrolled in a course
-      requestBody:
+name: Bug Report
+description: Report a bug on eFront
+title: "[Bug] <short description of the bug>"
+labels: ["Bug"]
+assignees: 
+  - MisterIcy
+  - 4riS
+body: 
+  - type: markdown
+    attributes:
+      value: | 
+        ## 🐞 Bug Report
+        Please fill in the following details to help us understand the issue you are facing.
+        Incomplete reports may be delayed.
+  - type: input
+    id: version
+    attributes:
+      label: eFront Version
+      description: |
+        Provide the version of eFront where the bug is occurring.
+        
+        **Note**: Versions prior to 7.0.0 are no longer supported. Please confirm that the issue exists on a supported version before reporting.
+      placeholder: 7.0.0
+      validations:
         required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/WebhookPayload'
-            example:
-
-      responses:
-        '2xx':
-          description: Webhook received successfully
-        '4xx':
-          description: Client error
-        '5xx':
-          description: Internal server error
-
-components:
-  schemas:
-    UserEnrolledToCoursePayload:
-      type: object
-      properties:
-        event_type: 
-          type: string
-          description: The type of event that occurred
-          default: user_enrollment
-        data:
-          type: object
-          description: The data associated with the event
-          properties:
-            user_id:
-              type: integer
-              description: The ID of the user who was enrolled in the course
-            user_login:
-              type: string
-              description: The login of the user who was enrolled in the course
-            user_name:
-              type: string
-              description: The first name of the user who was enrolled in the course
-            last_name:
-              type: string
-              description: The last name of the user who was enrolled in the course
-            user_email:
-              type: string
-              description: The email of the user who was enrolled in the course
-              format: email
-            usertype_id: 
-              type: integer
-              description: The ID of the UserType associated with the user
-            user_type_name:
-              type: string
-              description: The name of the UserType associated with the user
-            branch_id:
-              type: integer
-              description: The ID of the branch associated with the user
-            branch_name:
-              type: string
-              description: The name of the branch associated with the user
-            branch_public_id:
-              type: string
-              description: The public ID of the branch associated with the user
-            branch_parent_id:
-              type: integer
-              description: The ID of the parent branch associated with the user
-              nullable: true
-            branch_url:
-              type: string
-              description: The URL of the branch associated with the user
-            course_id:
-              type: integer
-              description: The ID of the course the user was enrolled into
-            course_name:  
-              type: string
-              description: The name of the course the user was enrolled into
-            course_public_id:
-              type: string
-              description: The public ID of the course the user was enrolled into
-            course_code:
-              type: string
-              description: The code of the course the user was enrolled into
-            course_active:
-              type: boolean
-              description: Indicates if the course is active or not
-            course_type:
-              type: string
-              enum:
-                - elearning
-                - ilt
-              description: Indicates whether a course is blended (ilt) or e-learning (elearning)
-            course_category_id: 
-              type: integer
-              description: The ID of the course category associated with the course
-            course_created_at:
-              type: string
-              format: date-time
-              description: The date and time when the course was created
-            course_branch_owner_id:
-              type: integer
-              nullable: true
-              description: The ID of the branch on which the course was created. Defaults to null if the course was created by a global administrator / instructor
-            course_category_name:
-              type: string
-              description: The name of the course category associated with the course
-            course_progress:
-              type: integer
-              description: The progress of the user in the course (percentage of completion)
-            course_status:
-              type: string
-              enum:
-                - pending
-                - registered
-                - in_progress
-                - completed
-                - failed
-                - canceled
-                - expired
-                - no_show
-                - transaction_pending
-              description: The status of the user in the course
-            course_score: 
-              type: number
-              format: float
-              description: The score of the user in the course
-            course_from_timestamp:
-              type: string
-              format: date-time
-              description: The start date and time of the enrollment (timestamp)
-            course_to_timestamp:
-              type: string
-              format: date-time
-              description: The end date and time of the enrollment (timestamp)
-            browser_name: 
-              type: string
-              description: The name of the browser used by the user
-            browser_version:
-              type: string
-              description: The version of the browser used by the user
-            platform_name:
-              type: string
-              description: The platform of the browser used by the user
-            platform_version:
-              type: string
-              description: The version of the platform used by the user
-            ip: 
-              type: string
-              description: The IP address of the user
-          required: 
-            
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 Description
+      description: |
+        A clear and concise description of what the bug is.
+      placeholder: |
+        I am unable to add a new user in eFront.
+        When I click on the "Add User" button, the page does not load.
+      validations:
+        required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        Provide a **step-by-step** guide on how to reproduce the issue.  
+        Include any specific configurations or settings that are relevant to the bug:
+        - Browser version, if the issue is browser-specific
+        - Operating system, if the issue only occurs on certain OSes
+        - Server configuration (e.g. PHP version, MariaDB version), if relevant
+      placeholder: |
+        1. Login as an Administrator
+        2. Go to the Users Page
+        3. Click on the "Add User" button.
+        4. Notice that the page does not load
+      validations:
+        required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: |
+        Describe what you expected to happen when following the steps above.
+      placeholder: |
+        The page should load and allow me to add a new user.
+      validations:
+        required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: |
+        Describe what actually happened when following the steps above.
+      placeholder: |
+        The page does not load and I see a blank screen.
+      validations:
+        required: true
+  - type: textarea
+    id: visualproof
+    attributes:
+      label: Visual Proof (optional)
+      description: |
+        If applicable, please provide a screenshot or screen recording of the issue. 
+        This will help us better understand the problem and facilitate a quicker reproduction and resolution.
+      placeholder: |
+        Drag and drop a screenshot or screen recording here (optional).
+      validations:
+        required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is the issue?
+      options: 
+        - 💥 Critical – Crashing eFront / Blocking usage
+        - 🐛 Major – Key functionality is not working
+        - 🧩 Minor – Does not affect core functionality
+        - 🧪 Cosmetic – UI/UX/Translations issues
+      validations:
+        required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Final Checklist
+      options:
+        - label: I have searched existing issues and this bug has not been reported before.
+          required: true
+        - label: I have checked the documentation and found no mention of this issue.
+          required: true
+        - label: I have disabled all plugins and removed any custom JavaScript and the issue still occurs.
+          required: true
+        - label: I have provided all necessary details to reproduce the issue.
+          required: true
