@@ -32,8 +32,8 @@ body:
       placeholder: |
         I am unable to add a new user in eFront.
         When I click on the "Add User" button, the page does not load.
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: reproduction
     attributes:
@@ -49,8 +49,8 @@ body:
         2. Go to the Users Page
         3. Click on the "Add User" button.
         4. Notice that the page does not load
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: expected
     attributes:
@@ -59,8 +59,8 @@ body:
         Describe what you expected to happen when following the steps above.
       placeholder: |
         The page should load and allow me to add a new user.
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: actual
     attributes:
@@ -69,8 +69,8 @@ body:
         Describe what actually happened when following the steps above.
       placeholder: |
         The page does not load and I see a blank screen.
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: visualproof
     attributes:
@@ -80,8 +80,8 @@ body:
         This will help us better understand the problem and facilitate a quicker reproduction and resolution.
       placeholder: |
         Drag and drop a screenshot or screen recording here (optional).
-      validations:
-        required: false
+    validations:
+      required: false
   - type: dropdown
     id: severity
     attributes:
@@ -92,8 +92,8 @@ body:
         - 🐛 Major – Key functionality is not working
         - 🧩 Minor – Does not affect core functionality
         - 🧪 Cosmetic – UI/UX/Translations issues
-      validations:
-        required: true
+    validations:
+      required: true
   - type: checkboxes
     id: checklist
     attributes:
